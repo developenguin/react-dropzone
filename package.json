@@ -1,0 +1,9 @@
+{
+  "name": "react-dropzone",
+  "version": "1.0.0",
+  "description": "A simple dropzone component written in React",
+  "main": "src/index.js",
+  "repository": "https://github.com/developenguin/react-dropzone",
+  "author": "Developenguin",
+  "license": "MIT"
+}
