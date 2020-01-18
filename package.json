@@ -8,15 +8,19 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --fix ./src",
-    "build": "babel ./src -d ./dist --copy-files"
+    "build": "rm -rf dist && webpack --mode=production",
+    "build-dev": "rm -rf dist && webpack --mode=development",
+    "start": "rm -rf dist && webpack --mode=development -w"
   },
   "dependencies": {
-    "eslint-plugin-react": "^7.18.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
-    "eslint": "^6.8.0"
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
