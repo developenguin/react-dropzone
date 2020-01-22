@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dropzone from './components/Dropzone';
 
-const App = props => {
+const App = () => {
   return (
-    <h1>Hello!</h1>
-  )
+    <Dropzone/>
+  );
 };
 
 ReactDOM.render(<App/>, document.getElementById('app'));
