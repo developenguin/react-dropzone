@@ -1,0 +1,16 @@
+.container {
+  border: 1px solid #333;
+  background: #ccc;
+  width: 100%;
+  min-height: 250px;
+}
+
+.dragFiles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  display: none;
+}
