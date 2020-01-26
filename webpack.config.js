@@ -3,7 +3,10 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = {
+module.exports = (env, argv) => ({
+
+  mode: argv.mode === 'production' ? 'production' : 'development',
+  devtool: argv.mode === 'production' ? false : 'source-map',
 
   entry: './src/index.jsx',
   output: {
@@ -64,6 +67,12 @@ module.exports = {
       chunkFilename: '[id].[hash].css'
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
 
-};
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  }
+
+});
