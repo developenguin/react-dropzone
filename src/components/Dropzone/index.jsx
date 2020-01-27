@@ -31,7 +31,7 @@ const Dropzone = props => {
         onChange={onFileChange}
       />
       <div className={styles.dragFiles}>
-        <p>Drag files here to upload</p>
+        <p>Drag files here or click to upload</p>
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => ({
@@ -11,7 +9,7 @@ module.exports = (env, argv) => ({
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: 'index.js'
   },
 
   resolve: {
@@ -28,17 +26,9 @@ module.exports = (env, argv) => ({
         }
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader'
-          }
-        ]
-      },
-      {
         test: /\.scss$/,
         loader: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -58,14 +48,6 @@ module.exports = (env, argv) => ({
   },
 
   plugins: [
-    new HTMLWebpackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css'
-    }),
     new CleanWebpackPlugin()
   ],
 
@@ -73,6 +55,12 @@ module.exports = (env, argv) => ({
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   }
 
 });
