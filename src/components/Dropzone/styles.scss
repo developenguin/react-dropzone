@@ -12,6 +12,10 @@
   }
 }
 
+.containerHover {
+  transform: scale(0.95);
+}
+
 .dragFiles {
   display: flex;
   align-items: center;
