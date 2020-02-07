@@ -1,6 +1,6 @@
 .container {
   box-sizing: border-box;
-  border: 5px dashed #ccc;
+  border: 4px dashed #ccc;
   border-radius: 4px;
   background: #eee;
   width: 100%;
@@ -9,6 +9,14 @@
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+.disabled {
+  border: none;
+
+  :hover {
+    cursor: default;
   }
 }
 

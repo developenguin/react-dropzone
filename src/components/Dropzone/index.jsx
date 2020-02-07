@@ -13,18 +13,36 @@ const Dropzone = props => {
   };
 
   const onDragOver = evt => {
+
     stopEvent(evt);
+
+    if (props.isDisabled) {
+      return;
+    }
+
     setIsHovering(true);
+
   };
 
   const onDragLeave = evt => {
+
     stopEvent(evt);
+
+    if (props.isDisabled) {
+      return;
+    }
+
     setIsHovering(false);
+
   };
 
   const onDrop = evt => {
 
     stopEvent(evt);
+
+    if (props.isDisabled) {
+      return;
+    }
 
     const { files } = evt.dataTransfer;
 
@@ -35,6 +53,10 @@ const Dropzone = props => {
   };
 
   const onFileChange = evt => {
+
+    if (props.isDisabled) {
+      return;
+    }
 
     const { files } = evt.target;
 
@@ -49,7 +71,8 @@ const Dropzone = props => {
 
   const classes = classNames({
     [styles.container]: true,
-    [styles.containerHover]: isHovering
+    [styles.containerHover]: isHovering,
+    [styles.disabled]: props.isDisabled
   });
 
   return (
@@ -66,9 +89,10 @@ const Dropzone = props => {
         className={styles.input}
         ref={fileInputRef}
         onChange={onFileChange}
+        disabled={props.isDisabled}
       />
       <div className={styles.dragFiles}>
-        <p>{props.label || 'Drag files here or click to upload'}</p>
+        <p>{props.label}</p>
       </div>
     </div>
   );
@@ -77,7 +101,8 @@ const Dropzone = props => {
 
 Dropzone.propTypes = {
   onFileChange: propTypes.func.isRequired,
-  label: propTypes.string
+  label: propTypes.string,
+  isDisabled: propTypes.bool
 };
 
 export default Dropzone;
