@@ -68,7 +68,7 @@ const Dropzone = props => {
         onChange={onFileChange}
       />
       <div className={styles.dragFiles}>
-        <p>Drag files here or click to upload</p>
+        <p>{props.label || 'Drag files here or click to upload'}</p>
       </div>
     </div>
   );
@@ -76,7 +76,8 @@ const Dropzone = props => {
 };
 
 Dropzone.propTypes = {
-  onFileChange: propTypes.func.isRequired
+  onFileChange: propTypes.func.isRequired,
+  label: propTypes.string
 };
 
 export default Dropzone;

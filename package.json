@@ -9,9 +9,7 @@
   "scripts": {
     "lint": "eslint --fix ./src",
     "build": "rm -rf dist && webpack --mode=production",
-    "build-dev": "rm -rf dist && webpack --mode=development",
-    "start": "rm -rf dist && webpack-dev-server --open --mode=development",
-    "storybook": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -25,6 +23,7 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@storybook/addon-actions": "^5.3.10",
+    "@storybook/addon-knobs": "^5.3.12",
     "@storybook/addon-links": "^5.3.10",
     "@storybook/addons": "^5.3.10",
     "@storybook/react": "^5.3.10",
