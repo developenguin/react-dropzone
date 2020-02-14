@@ -69,15 +69,28 @@ const Dropzone = props => {
     evt.stopPropagation();
   };
 
-  const classes = classNames({
+  const containerClasses = classNames({
     [styles.container]: true,
+    [props.containerClassName]: props.containerClassName,
+    [styles.disabled]: props.isDisabled,
+    [props.disabledClassName]: props.disabledClassName && props.isDisabled,
     [styles.containerHover]: isHovering,
-    [styles.disabled]: props.isDisabled
+    [props.containerHoverClassName]: isHovering && props.containerHoverClassName
+  });
+
+  const dragFileClasses = classNames({
+    [styles.dragFiles]: true,
+    [props.dragFilesClassName]: props.dragFilesClassName
+  });
+
+  const inputClasses = classNames({
+    [styles.input]: true,
+    [props.fileInputClassName]: props.fileInputClassName
   });
 
   return (
     <div
-      className={classes}
+      className={`dz-container ${containerClasses}${props.isDisabled ? 'dz-disabled' : ''}`}
       onClick={onClickDropzone}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
@@ -86,12 +99,12 @@ const Dropzone = props => {
       <input
         type="file"
         multiple
-        className={styles.input}
+        className={`dz-input ${inputClasses}`}
         ref={fileInputRef}
         onChange={onFileChange}
         disabled={props.isDisabled}
       />
-      <div className={styles.dragFiles}>
+      <div className={`dz-drag-files ${dragFileClasses}`}>
         <p>{props.label}</p>
       </div>
     </div>
@@ -102,7 +115,12 @@ const Dropzone = props => {
 Dropzone.propTypes = {
   onFileChange: propTypes.func.isRequired,
   label: propTypes.string,
-  isDisabled: propTypes.bool
+  isDisabled: propTypes.bool,
+  containerClassName: propTypes.string,
+  dragFilesClassName: propTypes.string,
+  fileInputClassName: propTypes.string,
+  containerHoverClassName: propTypes.string,
+  disabledClassName: propTypes.string
 };
 
 export default Dropzone;

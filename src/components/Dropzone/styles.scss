@@ -10,14 +10,15 @@
   &:hover {
     cursor: pointer;
   }
-}
 
-.disabled {
-  border: none;
+  &:disabled {
+    border: none;
 
-  :hover {
-    cursor: default;
+    :hover {
+      cursor: default;
+    }
   }
+
 }
 
 .containerHover {
