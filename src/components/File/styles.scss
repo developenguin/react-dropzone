@@ -1,0 +1,30 @@
+.imgPreview {
+  width: 60px;
+  height: auto;
+}
+
+.filePreview {
+  width: 60px;
+  height: 75px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 75px;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  max-width: 150px;
+}
+
+.fileName {
+  margin-top: 0.5rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
