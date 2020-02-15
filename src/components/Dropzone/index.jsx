@@ -1,6 +1,7 @@
 import React, { createRef, useState } from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
+import File from '../File';
 import styles from './styles.scss';
 
 const Dropzone = props => {
@@ -95,6 +96,11 @@ const Dropzone = props => {
     [props.fileInputClassName]: props.fileInputClassName
   });
 
+  const labelClasses = classNames({
+    [styles.label]: true,
+    [props.dropzoneLabelClassName]: props.dropzoneLabelClassName
+  });
+
   return (
     <div
       className={`dz-container ${containerClasses} ${props.isDisabled ? 'dz-disabled' : ''}`}
@@ -112,8 +118,17 @@ const Dropzone = props => {
         disabled={props.isDisabled}
       />
       <div className={`dz-drag-files ${dragFileClasses}`}>
-        {files.map((file, idx) => (<span key={`f_${idx}`}>{file.name}</span>))}
-        {!files.length && <p>{props.label}</p>}
+        <div className={styles.previewWrapper}>
+          {files.map((file, idx) => (
+            <File
+              key={`file_${idx}`}
+              file={file}
+            />
+          ))}
+        </div>
+        {!files.length && <p
+          className={`dz-label ${labelClasses}`}
+        >{props.label}</p>}
       </div>
     </div>
   );
@@ -128,7 +143,8 @@ Dropzone.propTypes = {
   dragFilesClassName: propTypes.string,
   fileInputClassName: propTypes.string,
   containerHoverClassName: propTypes.string,
-  disabledClassName: propTypes.string
+  disabledClassName: propTypes.string,
+  dropzoneLabelClassName: propTypes.string
 };
 
 export default Dropzone;

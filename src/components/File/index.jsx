@@ -6,7 +6,7 @@ import styles from './styles.scss';
 const File = props => {
 
   const [imgData, setImgData] = useState(null);
-  const isImageType = props.file.type.toLowerCase().includes('image');
+  const isImageType = props.file.type.toLowerCase().includes('image/');
   const ext = props.file.name
     .toUpperCase()
     .split('.')
