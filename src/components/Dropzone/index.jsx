@@ -7,6 +7,7 @@ const Dropzone = props => {
 
   let fileInputRef = createRef();
   let [ isHovering, setIsHovering ] = useState(false);
+  let [ files, setFiles ] = useState([]);
 
   const onClickDropzone = () => {
     fileInputRef.current.click();
@@ -44,9 +45,7 @@ const Dropzone = props => {
       return;
     }
 
-    const { files } = evt.dataTransfer;
-
-    props.onFileChange(files);
+    onAddNewFiles(evt.dataTransfer.files);
 
     setIsHovering(false);
 
@@ -60,7 +59,15 @@ const Dropzone = props => {
 
     const { files } = evt.target;
 
-    props.onFileChange(files);
+    onAddNewFiles(files);
+
+  };
+
+  const onAddNewFiles = addedFiles => {
+
+    props.onFileChange(addedFiles);
+
+    setFiles([...files, ...addedFiles]);
 
   };
 
@@ -73,7 +80,7 @@ const Dropzone = props => {
     [styles.container]: true,
     [props.containerClassName]: props.containerClassName,
     [styles.disabled]: props.isDisabled,
-    [props.disabledClassName]: props.disabledClassName && props.isDisabled,
+    [props.disabledClassName]: props.isDisabled && props.disabledClassName,
     [styles.containerHover]: isHovering,
     [props.containerHoverClassName]: isHovering && props.containerHoverClassName
   });
@@ -90,7 +97,7 @@ const Dropzone = props => {
 
   return (
     <div
-      className={`dz-container ${containerClasses}${props.isDisabled ? 'dz-disabled' : ''}`}
+      className={`dz-container ${containerClasses} ${props.isDisabled ? 'dz-disabled' : ''}`}
       onClick={onClickDropzone}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
@@ -105,7 +112,8 @@ const Dropzone = props => {
         disabled={props.isDisabled}
       />
       <div className={`dz-drag-files ${dragFileClasses}`}>
-        <p>{props.label}</p>
+        {files.map((file, idx) => (<span key={`f_${idx}`}>{file.name}</span>))}
+        {!files.length && <p>{props.label}</p>}
       </div>
     </div>
   );

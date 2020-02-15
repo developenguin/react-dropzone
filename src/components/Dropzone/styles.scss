@@ -11,14 +11,14 @@
     cursor: pointer;
   }
 
-  &:disabled {
-    border: none;
+}
 
-    :hover {
-      cursor: default;
-    }
+.disabled {
+  border: none;
+
+  :hover {
+    cursor: default;
   }
-
 }
 
 .containerHover {
