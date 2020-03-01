@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Dropzone With Custom Styling 1`] = `
+<div
+  class="dz-container container customContainer "
+>
+  <input
+    class="dz-input input"
+    multiple=""
+    type="file"
+  />
+  <div
+    class="dz-drag-files dragFiles customDragFiles"
+  >
+    <div
+      class="previewWrapper"
+    />
+    <p
+      class="dz-label label"
+    >
+      This one has custom styling.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dropzone With Defaults 1`] = `
+<div
+  class="dz-container container "
+>
+  <input
+    class="dz-input input"
+    multiple=""
+    type="file"
+  />
+  <div
+    class="dz-drag-files dragFiles"
+  >
+    <div
+      class="previewWrapper"
+    />
+    <p
+      class="dz-label label"
+    >
+      Click or drag to upload.
+    </p>
+  </div>
+</div>
+`;
