@@ -1,3 +1,3 @@
 import Dropzone from './components/Dropzone';
 
-export default Dropzone;
+exports.Dropzone = Dropzone;
