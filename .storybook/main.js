@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.js', '../src/**/*.stories.jsx'],
   addons: [
+    '@storybook/addon-docs',
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register'
@@ -27,6 +28,18 @@ module.exports = {
           }
         }
       ]
+    });
+
+    config.module.rules.push({
+      test: /stories.js(x)?$/,
+      loader: require.resolve('@storybook/source-loader'),
+      include: [path.resolve(__dirname, '../src/components/')],
+      enforce: 'pre',
+      options: {
+        injectParameters: true,
+        inspectLocalDependencies: false,
+        inspectDependencies: false
+      }
     });
 
     return config;
