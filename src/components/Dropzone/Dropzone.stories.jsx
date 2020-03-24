@@ -1,4 +1,5 @@
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import File from '../File';
 import styles from './styles.stories.scss';
 import React from 'react';
 import Dropzone from './';
@@ -10,6 +11,7 @@ export default {
 
 export const withDefaults = () => (
   <Dropzone
+    FileComponent={File}
     onFileChange={files => console.table(files)}
     label={text('Label', 'Click or drag to upload.')}
     isDisabled={boolean('Disabled', false)}
@@ -18,6 +20,7 @@ export const withDefaults = () => (
 
 export const withCustomStyling = () => (
   <Dropzone
+    FileComponent={File}
     onFileChange={files => console.table(files)}
     label={text('Label', 'This one has custom styling.')}
     isDisabled={boolean('Disabled', false)}

@@ -1,7 +1,6 @@
 import React, { createRef, useState } from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
-import File from '../File';
 import styles from './styles.scss';
 
 const Dropzone = props => {
@@ -9,6 +8,8 @@ const Dropzone = props => {
   let fileInputRef = createRef();
   let [ isHovering, setIsHovering ] = useState(false);
   let [ files, setFiles ] = useState([]);
+
+  const { FileComponent } = props;
 
   const onClickDropzone = () => {
     fileInputRef.current.click();
@@ -120,7 +121,7 @@ const Dropzone = props => {
       <div className={`dz-drag-files ${dragFileClasses}`}>
         <div className={styles.previewWrapper}>
           {files.map((file, idx) => (
-            <File
+            <FileComponent
               key={`file_${idx}`}
               file={file}
             />
@@ -136,6 +137,7 @@ const Dropzone = props => {
 };
 
 Dropzone.propTypes = {
+  FileComponent: propTypes.element.isRequired,
   onFileChange: propTypes.func.isRequired,
   label: propTypes.string,
   isDisabled: propTypes.bool,
