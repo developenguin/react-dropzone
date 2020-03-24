@@ -2,48 +2,56 @@
 
 exports[`Storyshots Dropzone With Custom Styling 1`] = `
 <div
-  class="dz-container container customContainer "
+  style="position: relative; z-index: 0;"
 >
-  <input
-    class="dz-input input"
-    multiple=""
-    type="file"
-  />
   <div
-    class="dz-drag-files dragFiles customDragFiles"
+    class="dz-container container customContainer "
   >
-    <div
-      class="previewWrapper"
+    <input
+      class="dz-input input"
+      multiple=""
+      type="file"
     />
-    <p
-      class="dz-label label"
+    <div
+      class="dz-drag-files dragFiles customDragFiles"
     >
-      This one has custom styling.
-    </p>
+      <div
+        class="previewWrapper"
+      />
+      <p
+        class="dz-label label"
+      >
+        This one has custom styling.
+      </p>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Dropzone With Defaults 1`] = `
 <div
-  class="dz-container container "
+  style="position: relative; z-index: 0;"
 >
-  <input
-    class="dz-input input"
-    multiple=""
-    type="file"
-  />
   <div
-    class="dz-drag-files dragFiles"
+    class="dz-container container "
   >
-    <div
-      class="previewWrapper"
+    <input
+      class="dz-input input"
+      multiple=""
+      type="file"
     />
-    <p
-      class="dz-label label"
+    <div
+      class="dz-drag-files dragFiles"
     >
-      Click or drag to upload.
-    </p>
+      <div
+        class="previewWrapper"
+      />
+      <p
+        class="dz-label label"
+      >
+        Click or drag to upload.
+      </p>
+    </div>
   </div>
 </div>
 `;
