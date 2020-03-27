@@ -1,28 +1,16 @@
 .spinner {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-
-  &:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border-width: 6px;
-    border-style: solid;
-    border-color: #fff transparent #fff transparent;
-    animation: spinner 1.2s linear infinite;
-  }
-
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
-@keyframes spinner {
+@keyframes :global(sk-scaleout) {
   0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+      opacity: 0;
+    }
 }
